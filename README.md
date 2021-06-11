@@ -1,3 +1,9 @@
++ This repository:
+Disable saving backups (.bk) by setting a flag DISABLE_BACKUP here; default is True:
+https://github.com/Twenkid/faceswap/blob/master/plugins/train/model/_base.py
+
+(Saves spaces on RAM disks, less writing on an SSD etc. - I didn't find a flag in the command line, modifying it with a flag would require parameters passings etc.)
+
 # deepfakes_faceswap
 <p align="center">
   <a href="https://faceswap.dev"><img src="https://i.imgur.com/zHvjHnb.png"></img></a>
