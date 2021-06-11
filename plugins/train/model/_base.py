@@ -31,6 +31,12 @@ from plugins.train._config import Config
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 _CONFIG = None
+DISABLE_BACKUP = True 
+'''9.6.2021, Twenkid -- don't save .bk files
+ DISABLE_BACKUP = True 
+ See: def _save(self):
+ 
+'''
 
 
 def KerasModel(inputs, outputs, name):  # pylint:disable=invalid-name
@@ -589,7 +595,8 @@ class _IO():
         logger.debug("Backing up and saving models")
         print("")  # Insert a new line to avoid spamming the same row as loss output
         save_averages = self._get_save_averages()
-        if save_averages and self._should_backup(save_averages):
+        #if save_averages and self._should_backup(save_averages):
+        if save_averages and self._should_backup(save_averages) and not DISABLE_BACKUP:
             self._backup.backup_model(self._filename)
             # pylint:disable=protected-access
             self._backup.backup_model(self._plugin.state._filename)
